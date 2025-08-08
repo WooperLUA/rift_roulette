@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root
+{
+    --button-color-primary : #6194f4;
+    --button-color-box-shadow : #506ea9;
+}
+
+body {
+    background: #373737;
+    color: white;
+    font-family: "Poppins", sans-serif;
+    text-align: center;
+    margin-top: 80px;
+}
+
+body > *
+{
+    opacity: 0;
+    transform: scale(0.8);
+    animation-fill-mode: forwards;
+    animation-name: popup;
+    animation-duration: 0.5s;
+    animation-timing-function: ease;
+    animation-delay: 0s;
+}
+
+body > *:nth-child(1) { animation-delay: 0.1s; }
+body > *:nth-child(2) { animation-delay: 0.2s; }
+body > *:nth-child(3) { animation-delay: 0.3s; }
+body > *:nth-child(4) { animation-delay: 0.4s; }
+body > *:nth-child(5) { animation-delay: 0.5s; }
+
+
+
+h1
+{
+    font-size: 3rem;
+}
+
+h1 {
+    animation-name: popup-spin;
+    animation-duration: 0.7s;
+    animation-timing-function: ease-out;
+}
+
+.background
+{
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("../imgs/bg.png") no-repeat center center/cover;
+    filter: blur(12px);
+    z-index: -1;
+}
+
+.slot-machine
+{
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+.slot
+{
+    width: 160px;
+    height: 120px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(2.7px);
+    -webkit-backdrop-filter: blur(2.7px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 15px;
+    font-weight: bold;
+    align-content: center;
+    font-size: 1.5rem;
+    user-select: none;
+    cursor: default;
+}
+.slot span
+{
+    display: block;
+    height: 100px;
+}
+
+#spinBtn
+{
+    margin-top: 40px;
+    cursor: pointer;
+    border: none;
+    border-radius: 12px;
+    background: var(--button-color-primary);
+    color: white;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 0 10px var(--button-color-box-shadow);
+
+    font-size: 1.8rem;
+    padding: 16px 48px;
+    font-weight: bold;
+}
+
+#spinBtn:hover:not(:disabled)
+{
+    box-shadow: 0 0 20px 5px var(--button-color-box-shadow);
+    background: var(--button-color-primary);
+}
+
+#spinBtn:active:not(:disabled)
+{
+    box-shadow: 0 0 15px 3px var(--button-color-box-shadow) inset;
+    background: var(--button-color-primary);
+}
+
+#spinBtn:disabled
+{
+    background: #888;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+@keyframes popup
+{
+    to
+    {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes popup-spin
+{
+    0%
+    {
+        opacity: 0;
+        transform: scale(0.8) rotate(0deg);
+    }
+    100%
+    {
+        opacity: 1;
+        transform: scale(1) rotate(360deg);
+    }
+}
